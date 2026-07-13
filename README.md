@@ -270,9 +270,9 @@ No backend server or database is required.
 
 MCA Student | Software Developer
 
-GitHub: https://github.com/YOUR_GITHUB_USERNAME
+GitHub: https://github.com/TechGracia
 
-LinkedIn: YOUR_LINKEDIN_URL
+LinkedIn: https://www.linkedin.com/in/gracia-sharon-jopson/
 
 ---
 
