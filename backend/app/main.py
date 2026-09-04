@@ -6,6 +6,7 @@ from pydantic import BaseModel
 from starlette.middleware.sessions import SessionMiddleware
 from starlette.responses import RedirectResponse
 from urllib.parse import urlencode
+import os
 
 from app.database import get_db
 from app import models, schemas
@@ -25,11 +26,16 @@ from app.auth import (
 # CONFIGURATION
 # =========================================================
 
-FRONTEND_URL = "http://localhost:5173"
-FRONTEND_LOGIN_URL = f"{FRONTEND_URL}/login"
+# =========================================================
+# CONFIGURATION
+# =========================================================
 
-# Backend URL used by the frontend
-BACKEND_URL = "http://127.0.0.1:8000"
+FRONTEND_URL = os.getenv(
+    "FRONTEND_URL",
+    "http://localhost:3000"
+)
+
+FRONTEND_LOGIN_URL = f"{FRONTEND_URL}/login"
 
 
 # =========================================================
@@ -60,6 +66,8 @@ app.add_middleware(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
         "http://localhost:5173",
         "http://127.0.0.1:5173",
     ],

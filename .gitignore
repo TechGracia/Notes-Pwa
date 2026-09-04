@@ -1,25 +1,26 @@
-node_modules
-
-# Output
-.output
-.vercel
-.netlify
-.wrangler
-/.svelte-kit
-/build
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Env
+# Environment variables
 .env
-.env.*
-!.env.example
-!.env.test
-
-# Vite
-vite.config.js.timestamp-*
-vite.config.ts.timestamp-*
 backend/.env
+
+# Node / Svelte
+node_modules/
+.svelte-kit/
+build/
+
+# Python
 backend/venv/
+venv/
+__pycache__/
+backend/__pycache__/
+*.pyc
+*.pyo
+
+# IDE
+.vscode/
+
+# Logs
+npm-debug.log*
+*.log
+
+# Docker / database
+postgres_data/

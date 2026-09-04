@@ -1,0 +1,101 @@
+services:
+
+  # =====================================================
+  # POSTGRESQL DATABASE
+  # =====================================================
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: notes-postgres
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: notes_password
+      POSTGRES_DB: notes_db
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d notes_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+
+  # =====================================================
+  # FASTAPI BACKEND
+  # =====================================================
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+
+    container_name: notes-backend
+    restart: unless-stopped
+
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+    environment:
+      # -----------------------------
+      # DATABASE
+      # -----------------------------
+      DB_USER: postgres
+      DB_PASSWORD: notes_password
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: notes_db
+
+      # -----------------------------
+      # JWT
+      # -----------------------------
+      SECRET_KEY: your-super-secret-key-change-this
+
+      # -----------------------------
+      # GOOGLE OAUTH
+      # -----------------------------
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
+      GOOGLE_REDIRECT_URI: http://localhost:8000/auth/google/callback
+
+      # -----------------------------
+      # FRONTEND
+      # -----------------------------
+      FRONTEND_URL: http://localhost:3000
+
+    ports:
+      - "8000:8000"
+
+
+  # =====================================================
+  # SVELTE FRONTEND
+  # =====================================================
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: notes-frontend
+    restart: unless-stopped
+
+    depends_on:
+      - backend
+
+    ports:
+      - "3000:3000"
+
+
+# =====================================================
+# PERSISTENT DATABASE STORAGE
+# =====================================================
+
+volumes:
+  postgres_data:
