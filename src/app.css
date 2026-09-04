@@ -1,0 +1,458 @@
+/* ================================
+   GLOBAL RESET
+================================ */
+
+* {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	min-height: 100%;
+}
+
+body {
+	font-family:
+		Inter,
+		-apple-system,
+		BlinkMacSystemFont,
+		"Segoe UI",
+		Roboto,
+		Helvetica,
+		Arial,
+		sans-serif;
+
+	background: #0f0f14;
+	color: #f5f5f7;
+}
+
+button,
+input,
+textarea {
+	font: inherit;
+}
+
+button {
+	cursor: pointer;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+
+/* ================================
+   PAGE
+================================ */
+
+.page {
+	min-height: 100vh;
+	background: #0f0f14;
+}
+
+
+/* ================================
+   SIDEBAR
+================================ */
+
+.sidebar {
+	position: fixed;
+	left: 0;
+	top: 0;
+	bottom: 0;
+
+	width: 252px;
+
+	background: #1a1a22;
+	border-right: 1px solid #30303b;
+
+	padding: 28px 20px;
+
+	z-index: 100;
+}
+
+.sidebar-header {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+
+	margin-bottom: 28px;
+}
+
+.sidebar-logo {
+	width: 28px;
+	height: 28px;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	border-radius: 7px;
+
+	background: #4f46e5;
+	color: white;
+
+	font-size: 14px;
+	font-weight: 700;
+}
+
+.sidebar-title {
+	font-size: 16px;
+	font-weight: 700;
+	color: #ffffff;
+}
+
+.sidebar-divider {
+	height: 1px;
+	background: #30303b;
+	margin-bottom: 18px;
+}
+
+
+/* ================================
+   SIDEBAR BUTTONS
+================================ */
+
+.sidebar-nav {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.sidebar-button {
+	width: 100%;
+
+	display: flex;
+	align-items: center;
+	gap: 10px;
+
+	padding: 11px 14px;
+
+	border: none;
+	border-radius: 8px;
+
+	background: transparent;
+	color: #a9a9b8;
+
+	font-size: 14px;
+	font-weight: 500;
+
+	text-align: left;
+
+	transition:
+		background 0.15s ease,
+		color 0.15s ease;
+}
+
+.sidebar-button:hover {
+	background: #242432;
+	color: #ffffff;
+}
+
+.sidebar-button.active {
+	background: #312e81;
+	color: #ffffff;
+}
+
+.sidebar-bottom {
+	position: absolute;
+	left: 20px;
+	right: 20px;
+	bottom: 24px;
+}
+
+
+/* ================================
+   MAIN CONTENT
+================================ */
+
+.main {
+	margin-left: 252px;
+
+	min-height: 100vh;
+
+	padding: 48px 56px;
+}
+
+.content {
+	max-width: 1100px;
+	margin: 0 auto;
+}
+
+
+/* ================================
+   PAGE HEADER
+================================ */
+
+.page-header {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+
+	gap: 30px;
+
+	margin-bottom: 32px;
+}
+
+.page-header-left h1 {
+	margin: 0 0 8px;
+
+	font-size: 32px;
+	line-height: 1.2;
+
+	font-weight: 700;
+
+	color: #ffffff;
+}
+
+.page-header-left p {
+	margin: 0;
+
+	color: #9b9baa;
+
+	font-size: 15px;
+	line-height: 1.5;
+}
+
+
+/* ================================
+   ACTION AREA
+================================ */
+
+.actions {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+
+	margin-bottom: 36px;
+}
+
+.search-wrapper {
+	position: relative;
+	width: 320px;
+}
+
+.search-input {
+	width: 100%;
+
+	height: 46px;
+
+	padding: 0 16px 0 42px;
+
+	border: 1px solid #343441;
+	border-radius: 9px;
+
+	background: #15151c;
+	color: #ffffff;
+
+	outline: none;
+
+	font-size: 14px;
+
+	transition: border-color 0.15s ease;
+}
+
+.search-input::placeholder {
+	color: #666675;
+}
+
+.search-input:focus {
+	border-color: #4f46e5;
+}
+
+.search-icon {
+	position: absolute;
+
+	left: 15px;
+	top: 50%;
+
+	transform: translateY(-50%);
+
+	color: #777786;
+
+	font-size: 15px;
+}
+
+
+/* ================================
+   BUTTONS
+================================ */
+
+.primary-button {
+	height: 46px;
+
+	padding: 0 20px;
+
+	border: none;
+	border-radius: 9px;
+
+	background: #4f46e5;
+	color: #ffffff;
+
+	font-size: 14px;
+	font-weight: 600;
+
+	transition:
+		background 0.15s ease,
+		transform 0.1s ease;
+}
+
+.primary-button:hover {
+	background: #4338ca;
+}
+
+.primary-button:active {
+	transform: translateY(1px);
+}
+
+
+/* ================================
+   EMPTY STATE
+================================ */
+
+.empty-state {
+	min-height: 420px;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	text-align: center;
+
+	padding: 40px;
+}
+
+.empty-icon {
+	font-size: 34px;
+	margin-bottom: 16px;
+}
+
+.empty-state h2 {
+	margin: 0 0 10px;
+
+	font-size: 25px;
+	font-weight: 700;
+
+	color: #ffffff;
+}
+
+.empty-state p {
+	margin: 0 0 24px;
+
+	color: #9696a6;
+
+	font-size: 15px;
+}
+
+
+/* ================================
+   NOTES GRID
+================================ */
+
+.notes-grid {
+	display: grid;
+
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+
+	gap: 18px;
+}
+
+.note-card {
+	background: #191920;
+
+	border: 1px solid #2e2e39;
+
+	border-radius: 12px;
+
+	padding: 20px;
+
+	min-height: 170px;
+
+	transition:
+		border-color 0.15s ease,
+		transform 0.15s ease;
+}
+
+.note-card:hover {
+	border-color: #454554;
+	transform: translateY(-2px);
+}
+
+.note-card h3 {
+	margin: 0 0 10px;
+
+	font-size: 17px;
+	color: #ffffff;
+}
+
+.note-card p {
+	margin: 0;
+
+	color: #a0a0ae;
+
+	font-size: 14px;
+	line-height: 1.6;
+}
+
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 900px) {
+	.sidebar {
+		width: 210px;
+	}
+
+	.main {
+		margin-left: 210px;
+		padding: 36px 30px;
+	}
+
+	.notes-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media (max-width: 650px) {
+	.sidebar {
+		position: static;
+
+		width: 100%;
+		height: auto;
+
+		padding: 16px;
+	}
+
+	.sidebar-bottom {
+		position: static;
+		margin-top: 12px;
+	}
+
+	.main {
+		margin-left: 0;
+		padding: 28px 18px;
+	}
+
+	.page-header {
+		flex-direction: column;
+	}
+
+	.actions {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.search-wrapper {
+		width: 100%;
+	}
+
+	.notes-grid {
+		grid-template-columns: 1fr;
+	}
+}
